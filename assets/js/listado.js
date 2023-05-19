@@ -14,28 +14,31 @@ $(document).ready(function(){
 
         let listado = []
         //Opción 1 Proceso síncrono
-        // for (let index = desde; index <= hasta; index++) {
-        //     let url = `https://superheroapi.com/api.php/10225832066284806/${index}`
-        //     let respuesta = await ajax(url)
-        //     listado.push(respuesta)
-        // }
+        try {
+            for (let index = desde; index <= hasta; index++) {
+                let url = `https://superheroapi1.com/api.php/10225832066284806/${index}`
+                let respuesta = await ajax(url)
+                listado.push(respuesta)
+            }
+        } catch (error) {
+            alert("Estimado usuario la petición ha fallado por favor reintentar")
+        }
+        mostrarListado(listado)
 
         //Opción 2 Proceso Asíncrono
-        for (let index = desde; index <= hasta; index++) {
-            let url = `https://superheroapi.com/api.php/10225832066284806/${index}`
-            let respuesta = ajax(url)
-            listado.push(respuesta)
-        }
-        Promise.all(listado).then((respuestas) => {
-            console.log(respuestas);
-            mostrarListado(respuestas)
-        }).catch((error) => {
-            console.log("ErrorCatch", error);
-            alert("Estimado usuario la petición ha fallado por favor reintentar")
-        })
+        // for (let index = desde; index <= hasta; index++) {
+        //     let url = `https://superheroapi.com/api.php/10225832066284806/${index}`
+        //     let respuesta = ajax(url)
+        //     listado.push(respuesta)
+        // }
+        // Promise.all(listado).then((respuestas) => {
+        //     console.log(respuestas);
+        //     mostrarListado(respuestas)
+        // }).catch((error) => {
+        //     console.log("ErrorCatch", error);
+        //     alert("Estimado usuario la petición ha fallado por favor reintentar")
+        // })
         // console.log(listado);
-
-        // mostrarListado(listado)
     })
 
     function mostrarListado(listado) {

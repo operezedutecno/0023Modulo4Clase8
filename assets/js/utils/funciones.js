@@ -3,6 +3,7 @@ const peticiones = (url) => {
         fetch(url)
             .then((respuesta) => respuesta.json())
             .then((data) => resolve(data))
+            .catch((error) => reject(error))
     }) 
 }
 
